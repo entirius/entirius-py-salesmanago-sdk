@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.1.0rc1] - 2026-10-26
 
+### Added
+
+- `SalesmanagoClient.add_contact_to_loyalty_program(loyalty_data)`: enrolls contacts in a loyalty program
+  (`POST loyalty/program/v1/addContact`). Unset `LoyaltyData` fields are left out of the payload; an error status or
+  a body with `success: false` raises `SalesmanagoError`.
+
 ### Changed
 
 - Package metadata: keywords, classifiers and project URLs (docs, changelog, issues) for the PyPI page.
