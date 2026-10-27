@@ -103,6 +103,27 @@ class SalesmanagoClient:
                 f"The salesmanago API responded with an error. Message: {response_body.get('message')}"
             )
 
+    def add_contact_to_loyalty_program(self, loyalty_data: LoyaltyData):
+        request = Request(
+            method="POST", resource="loyalty/program/v1/addContact", auth=self, data=loyalty_data.to_dict()
+        )
+        response = request.make_request()
+        validation, response_body = validate_salesmanago_response(response, request)
+        if validation:
+            success = validate_salesmanago_request(response_body)
+            if success:
+                return response_body
+            else:
+                logger_process.error(
+                    "Salesmanago API response failed",
+                    extra={"details": {"request_params": request.params, "response_body": response_body}},
+                )
+                raise SalesmanagoError("Salesmanago response is not correct.")
+        else:
+            raise SalesmanagoError(
+                f"The salesmanago API responded with an error. Message: {response_body.get('message')}"
+            )
+
     def modify_loyalty_points(self, modify_points_data: ModifyPointsData):
         request = Request(
             method="POST", resource="loyalty/program/v1/modifyPoints", auth=self, data=modify_points_data.asdict()

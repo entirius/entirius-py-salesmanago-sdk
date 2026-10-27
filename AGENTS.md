@@ -24,7 +24,7 @@ SALESmanago marketing automation REST API SDK — distribution `entirius-py-sale
 ## Architecture
 
 - `src/salesmanago_sdk/services/client.py`: `SalesmanagoClient` covers contact create/modify/delete, batch delete
-  and loyalty points.
+  and loyalty (enroll a contact, read and modify points).
 - `services/request.py`: thin HTTP wrapper over `requests`.
 - `dto/`: customer, contact and loyalty payload dataclasses.
 - `validators/`: response shape validation.

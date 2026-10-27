@@ -1,7 +1,7 @@
 # entirius-py-salesmanago-sdk
 
 A Python client for the SALESmanago marketing automation REST API, part of Entirius, the open-source modular ecommerce platform.
-It creates, modifies and deletes contacts and reads and changes loyalty points behind one `SalesmanagoClient` class.
+It creates, modifies and deletes contacts and enrolls contacts in a loyalty program and reads and changes their points behind one `SalesmanagoClient` class.
 
 [![PyPI](https://img.shields.io/pypi/v/entirius-py-salesmanago-sdk.svg)](https://pypi.org/project/entirius-py-salesmanago-sdk/)
 [![Python](https://img.shields.io/pypi/pyversions/entirius-py-salesmanago-sdk.svg)](https://pypi.org/project/entirius-py-salesmanago-sdk/)
@@ -11,7 +11,8 @@ It creates, modifies and deletes contacts and reads and changes loyalty points b
 
 - Creates or modifies a contact from a typed `CustomerData` DTO (`create_or_modify_customer()`).
 - Deletes one contact or a batch of contacts (`delete_customer()`, `batch_delete_customer()`).
-- Reads and modifies loyalty program points (`get_loyalty_points()`, `modify_loyalty_points()`).
+- Enrolls a contact in a loyalty program (`add_contact_to_loyalty_program()`), reads and modifies its points
+  (`get_loyalty_points()`, `modify_loyalty_points()`).
 - Raises `SalesmanagoError` when the API answers with an error or an unexpected body.
 
 ## Installation
