@@ -19,13 +19,23 @@ SALESmanago marketing automation REST API SDK — distribution `entirius-py-sale
 - Git flow: `master` (production) + `develop` (integration); changes land via PR; semver tag on `master`.
 - Never rename the import package `salesmanago_sdk` — it is a public API contract.
 - Default: do not commit — git is the user's call.
+- No AI attribution in commits or PR descriptions.
 
 ## Architecture
 
-- `services/client.py` — `SalesmanagoClient`: customer create/modify/delete, batch delete.
-- `services/request.py` — thin HTTP wrapper over `requests`.
-- `dto/` — customer, contact and loyalty payload dataclasses.
-- `validators/` — response shape validation.
-- `settings.py` — reads `SALESMANAGO_API_URL` from Django settings (`django.conf`); tests configure a minimal Django
-  via `conftest.py`. Cutting this Django coupling is tracked as tech debt.
-- Integration tests hit the live SALESmanago API — skipped unless `SALESMANAGO_*` credentials are set.
+- `src/salesmanago_sdk/services/client.py`: `SalesmanagoClient` covers contact create/modify/delete, batch delete
+  and loyalty (enroll a contact, read and modify points).
+- `services/request.py`: thin HTTP wrapper over `requests`.
+- `dto/`: customer, contact and loyalty payload dataclasses.
+- `validators/`: response shape validation.
+- `settings.py`: reads Django settings (`django.conf`) at import; tests configure a minimal Django in
+  `tests/conftest.py`.
+- Integration tests hit the live SALESmanago API and are skipped unless `SALESMANAGO_*` credentials are set.
+
+## Settings
+
+Read from Django settings in `settings.py`.
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `SALESMANAGO_API_URL` | `https://www.salesmanago.pl/api/` | base URL of the SALESmanago API; every request path is appended to it |
