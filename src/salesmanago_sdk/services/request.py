@@ -42,7 +42,7 @@ class Request:
         self.headers["Accept"] = "application/json, application/json"
 
     def authorize(self):
-        # Tworzy pary klucz-wartość autoryzacji, którą podaje się w body requesta
+        # Build the authorization key-value pairs that are sent in the request body
         self.data["requestTime"] = int(time.time())
         for key, value in vars(self.auth).items():
             if not key.startswith("__") and not callable(value):

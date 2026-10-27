@@ -1,6 +1,6 @@
 [project]
 name = "entirius-py-salesmanago-sdk"
-version = "2.0.0"
+version = "2.1.0"
 description = "SALESmanago marketing automation SDK for Python, part of Entirius, the open-source modular ecommerce platform"
 keywords = ["salesmanago", "marketing-automation", "crm", "sdk", "django", "ecommerce", "entirius"]
 classifiers = [
